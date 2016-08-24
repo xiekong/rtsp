@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova.plugin.rtsp"
+        version="1.0.0">
+    <!--TODO 域名空间，插件ID,版本号 cordova 将根据 ID生成 plugins 下的目录结构 -->
+    <!--TODO 插件名-->
+    <name>rtsp</name>
+    <!--TODO 插件描述-->
+    <description>
+        this is a support for rtsp stream video plugin
+    </description>
+    <!--TODO 作者-->
+    <author>XieKong</author>
+    <!--TODO 关键字-->
+    <keywords>rtsp</keywords>
+    <!--TODO 许可协议-->
+    <license>Apache 2.0</license>
+    <engines>
+        <!--TODO 支持的引擎及版本号-->
+        <engine name="cordova" version=">=4.0"/>
+    </engines>
+    <!-- TODO android 平台的配置-->
+    <platform name="android">
+        <js-module src="www/RtspPlugin.js" name="RtspPlugin">
+            <!--TODO  这里是在JS中调该插件的前缀-->
+            <merges target="rtsp" />
+        </js-module>
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="RtspPlugin">
+                <!--TODO 插件的完整类路径-->
+                <param name="android-package" value="cordova.plugin.rtsp.RtspPlugin"/>
+            </feature>
+        </config-file>
+        <!--TODO Java 本地代码映射，由两部分组成，前面是在插件文件中的路径（源目录），后面是目标目录，就是要把这些文件放到哪个目录下-->
+        <source-file src="src/android/RtspPlugin.java" target-dir="src/cordova/plugin/rtsp"/>
+        <source-file src="src/android/RtspActivity.java" target-dir="src/cordova/plugin/rtsp"/>
+        <source-file src="src/android/video_back01.png" target-dir="res/drawable-hdpi"/>
+        <source-file src="src/android/video_back02.png" target-dir="res/drawable-hdpi"/>
+        <source-file src="src/android/videoback_button.xml" target-dir="res/drawable-hdpi"/>
+        <source-file src="src/android/activity_rtspvideo.xml" target-dir="res/layout-land"/>
+    </platform>
+</plugin>
